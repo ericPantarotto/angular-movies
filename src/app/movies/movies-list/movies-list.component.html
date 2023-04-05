@@ -1,0 +1,18 @@
+<img
+  *ngIf="!movies"
+  src="https://img.pikbest.com/png-images/20190918/cartoon-snail-loading-loading-gif-animation_2734139.png!bw700"
+  alt="Loading.."
+/>
+
+<div *ngIf="movies?.length == 0">
+    There are no records to display.
+</div>
+
+<div *ngFor="let movie of movies; let index = index" class="movie-container">
+  <div>
+    {{ index }}) Title: {{ movie.title | lowercase }} <br />
+    release date: {{ movie.releaseDate | date : "dd-MM-yyyy" }} <br />
+    release date: {{ movie.releaseDate | date | uppercase }} <br />
+    price: {{ movie.price | currency }}
+  </div>
+</div>
