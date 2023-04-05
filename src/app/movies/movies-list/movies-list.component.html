@@ -4,16 +4,16 @@
   alt="Loading.."
 />
 
-<div *ngIf="movies?.length == 0">
-    There are no records to display.
-</div>
+<div *ngIf="movies?.length == 0">There are no records to display.</div>
 
-<div *ngFor="let movie of movies; let index = index" class="movie-container">
-  <div>
-    {{ index }}) Title: {{ movie.title | lowercase }} <br />
-    release date: {{ movie.releaseDate | date : "dd-MM-yyyy" }} <br />
-    release date: {{ movie.releaseDate | date | uppercase }} <br />
-    price: {{ movie.price | currency }}
+<ng-container *ngIf="movies && movies!.length > 0">
+  <div *ngFor="let movie of movies; let index = index" class="movie-container">
+    <div>
+      {{ index }}) Title: {{ movie.title | lowercase }} <br />
+      release date: {{ movie.releaseDate | date : "dd-MM-yyyy" }} <br />
+      release date: {{ movie.releaseDate | date | uppercase }} <br />
+      price: {{ movie.price | currency }}
+    </div>
+    <button style="margin-left: 1rem" (click)="remove(index)">Remove</button>
   </div>
-  <button style="margin-left: 1rem;" (click)="remove(index)">Remove</button>
-</div>
+</ng-container>
