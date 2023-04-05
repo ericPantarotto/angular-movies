@@ -31,3 +31,4 @@ export class AppComponent implements OnInit {
     return n * 2;
   }
 }
+  
