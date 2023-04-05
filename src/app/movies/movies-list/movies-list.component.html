@@ -15,4 +15,5 @@
     release date: {{ movie.releaseDate | date | uppercase }} <br />
     price: {{ movie.price | currency }}
   </div>
+  <button style="margin-left: 1rem;" (click)="remove(index)">Remove</button>
 </div>

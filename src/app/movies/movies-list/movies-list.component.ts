@@ -13,4 +13,8 @@ export class MoviesListComponent implements OnInit {
 
   @Input()
   movies!: { title: string; releaseDate: Date; price: number }[];
+
+  remove(index: number) {
+    this.movies.splice(index, 1);
+  }
 }
