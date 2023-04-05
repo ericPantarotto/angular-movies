@@ -8,30 +8,19 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.moviesInTheaters = [
-        {
-          title: 'Spider-Man',
-          releaseDate: new Date(),
-          price: 1400.99,
-        },
-        {
-          title: 'Moana',
-          releaseDate: new Date('2016-11-14'),
-          price: 300.99,
-        },
-    ];
-    
-    this.moviesFutureReleases = [
       {
-        title: 'Avengers',
+        title: 'Spider-Man',
         releaseDate: new Date(),
-        price: 456.99,
+        price: 1400.99,
       },
       {
-        title: 'Toy Story',
-        releaseDate: new Date('2020-11-14'),
-        price: 789.99,
+        title: 'Moana',
+        releaseDate: new Date('2016-11-14'),
+        price: 300.99,
       },
     ];
+
+    this.moviesFutureReleases =[];
   }
 
   title = 'angular-movies';
