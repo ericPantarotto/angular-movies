@@ -9,13 +9,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './menu/menu.component';
 import { RatingComponent } from './utilities/rating/rating.component';
+import { LifecycletestComponent } from './lifecycletest/lifecycletest.component';
 @NgModule({
   declarations: [
     AppComponent,
     MoviesListComponent,
     GenericListComponent,
     MenuComponent,
-    RatingComponent
+    RatingComponent,
+    LifecycletestComponent
   ],
   imports: [
     BrowserModule,

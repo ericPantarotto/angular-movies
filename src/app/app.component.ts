@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
       },
     ];
 
-    this.moviesFutureReleases =[];
+    this.moviesFutureReleases = [];
   }
 
   title = 'angular-movies';
@@ -30,5 +30,8 @@ export class AppComponent implements OnInit {
   duplicateNumber(n: number) {
     return n * 2;
   }
+
+  handleRating(rate: number) {
+    alert(`The user selected ${rate}`); 
+  }
 }
-  
