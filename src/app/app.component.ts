@@ -26,12 +26,13 @@ export class AppComponent implements OnInit {
   title = 'angular-movies';
   moviesInTheaters!: { title: string; releaseDate: Date; price: number }[];
   moviesFutureReleases!: { title: string; releaseDate: Date; price: number }[];
+  display = true;
 
   duplicateNumber(n: number) {
     return n * 2;
   }
 
   handleRating(rate: number) {
-    alert(`The user selected ${rate}`); 
+    alert(`The user selected ${rate}`);
   }
 }

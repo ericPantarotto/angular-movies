@@ -1,5 +1,17 @@
 <app-menu />
 
+<div>
+    <input type="text" (input)="title = $event.target.value"> 
+</div>
+
+<div>
+    <input type="checkbox" checked (change)="display = !display"> Display
+</div>
+
+<!-- <app-lifecycletest [title]="'Felipe'"/> -->
+<app-lifecycletest *ngIf="display" [title]="title"/>
+
+
 <!-- <div class="container">
     <h2>In Theaters</h2>
     
