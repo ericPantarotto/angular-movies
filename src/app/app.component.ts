@@ -12,11 +12,14 @@ export class AppComponent implements OnInit {
         title: 'Spider-Man',
         releaseDate: new Date(),
         price: 1400.99,
+        poster:
+          'https://moviesapiecr.blob.core.windows.net/movies/3bbbf918-4c87-4060-9280-b7aa5be5750d.jpg',
       },
       {
         title: 'Moana',
         releaseDate: new Date('2016-11-14'),
         price: 300.99,
+        poster: 'https://moviesapiecr.blob.core.windows.net/movies/moana.jpg',
       },
     ];
 
@@ -24,8 +27,18 @@ export class AppComponent implements OnInit {
   }
 
   title = 'angular-movies';
-  moviesInTheaters!: { title: string; releaseDate: Date; price: number }[];
-  moviesFutureReleases!: { title: string; releaseDate: Date; price: number }[];
+  moviesInTheaters!: {
+    title: string;
+    releaseDate: Date;
+    price: number;
+    poster: string;
+  }[];
+  moviesFutureReleases!: {
+    title: string;
+    releaseDate: Date;
+    price: number;
+    poster: string;
+  }[];
   display = true;
 
   duplicateNumber(n: number) {
