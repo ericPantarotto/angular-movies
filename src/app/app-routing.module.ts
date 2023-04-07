@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CreateActorComponent } from './actors/create-actor/create-actor.component';
+import { EditActorComponent } from './actors/edit-actor/edit-actor.component';
+import { IndexActorsComponent } from './actors/index-actors/index-actors.component';
+import { CreateGenreComponent } from './genres/create-genre/create-genre.component';
+import { EditGenreComponent } from './genres/edit-genre/edit-genre.component';
 import { IndexGenresComponent } from './genres/index-genres/index-genres.component';
 import { HomeComponent } from './home/home.component';
-import { CreateGenreComponent } from './genres/create-genre/create-genre.component';
-import { IndexActorsComponent } from './actors/index-actors/index-actors.component';
-import { CreateActorComponent } from './actors/create-actor/create-actor.component';
-import { IndexTheatersComponent } from './movie-theaters/index-theaters/index-theaters.component';
 import { CreateTheaterComponent } from './movie-theaters/create-theater/create-theater.component';
-import { CreateMovieComponent } from './movies/create-movie/create-movie.component';
-import { EditActorComponent } from './actors/edit-actor/edit-actor.component';
-import { EditGenreComponent } from './genres/edit-genre/edit-genre.component';
 import { EditTheaterComponent } from './movie-theaters/edit-theater/edit-theater.component';
+import { IndexTheatersComponent } from './movie-theaters/index-theaters/index-theaters.component';
+import { CreateMovieComponent } from './movies/create-movie/create-movie.component';
 import { EditMovieComponent } from './movies/edit-movie/edit-movie.component';
 
 const routes: Routes = [
@@ -30,6 +30,7 @@ const routes: Routes = [
 
   { path: 'movies/create', component: CreateMovieComponent },
   { path: 'movies/edit/:id', component: EditMovieComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
