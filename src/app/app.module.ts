@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MoviesListComponent } from './movies/movies-list/movies-list.component';
-import { GenericListComponent } from './utilities/generic-list/generic-list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material/material.module';
 import { MenuComponent } from './menu/menu.component';
+import { MoviesListComponent } from './movies/movies-list/movies-list.component';
+import { GenericListComponent } from './utilities/generic-list/generic-list.component';
 import { RatingComponent } from './utilities/rating/rating.component';
+import { IndexGenresComponent } from './genres/index-genres/index-genres.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,14 +18,16 @@ import { RatingComponent } from './utilities/rating/rating.component';
     GenericListComponent,
     MenuComponent,
     RatingComponent,
+    HomeComponent,
+    IndexGenresComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
