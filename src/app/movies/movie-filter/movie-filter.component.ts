@@ -44,19 +44,20 @@ export class MovieFilterComponent implements OnInit {
       inTheaters: false,
     });
 
-    // this.form.valueChanges.subscribe((values) => {
-    //   this.movies = this.originalMovies;
-    //   this.filterMovies(values);
-    // });
+    this.form.valueChanges.subscribe((values) => {
+      this.movies = this.originalMovies;
+      this.filterMovies(values);
+    });
   }
 
-  // filterMovies(values: any) {
-  //   if (values.title) {
-  //     this.movies = this.movies.filter(
-  //       (movie) => movie.title.indexOf(values.title) !== -1
-  //     );
-  //   }
-  // }
+  filterMovies(values: any) {
+    if (values.title) {
+      this.movies = this.movies.filter(
+        (movie) =>
+          movie.title.toLowerCase().indexOf(values.title.toLowerCase()) !== -1
+      );
+    }
+  }
 
   clearForm() {
     this.form?.reset();
