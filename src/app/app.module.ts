@@ -24,6 +24,7 @@ import { MoviesListComponent } from './movies/movies-list/movies-list.component'
 import { GenericListComponent } from './utilities/generic-list/generic-list.component';
 import { RatingComponent } from './utilities/rating/rating.component';
 import { FormGenreComponent } from './genres/form-genre/form-genre.component';
+import { MovieFilterComponent } from './movies/movie-filter/movie-filter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { FormGenreComponent } from './genres/form-genre/form-genre.component';
     EditTheaterComponent,
     EditMovieComponent,
     FormGenreComponent,
+    MovieFilterComponent,
   ],
   imports: [
     BrowserModule,
