@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { firstLetterUppercase } from 'src/app/validators/firstLetterUppercase';
 
 @Component({
   selector: 'app-create-genre',
@@ -15,7 +16,11 @@ export class CreateGenreComponent implements OnInit {
       name: [
         '',
         {
-          validators: [Validators.required, Validators.minLength(3)],
+          validators: [
+            Validators.required,
+            Validators.minLength(3),
+            firstLetterUppercase(),
+          ],
         },
       ],
     });
@@ -33,9 +38,12 @@ export class CreateGenreComponent implements OnInit {
     if (field?.hasError('required')) {
       return 'The name field is required';
     }
-      if (field?.hasError('minlength')) {
-        return 'The minimum length is 3';
-      }
+    if (field?.hasError('minlength')) {
+      return 'The minimum length is 3';
+    }
+    if (field?.hasError('firstLetterUppercase')) {
+      return field.getError('firstLetterUppercase').message;
+    }
     return '';
   }
 }
