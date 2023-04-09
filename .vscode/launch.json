@@ -3,6 +3,20 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Debug_Edge",
+      "request": "launch",
+      "type": "msedge",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Debug_Chrome",
+      "request": "launch",
+      "type": "pwa-chrome",
+      "url": "http://localhost:4200",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
       "name": "ng serve",
       "type": "pwa-chrome",
       "request": "launch",
