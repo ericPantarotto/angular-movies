@@ -13,9 +13,7 @@
 
     <h4>Select Picture</h4>
 
-    <!-- <app-input-img
-    [urlCurrentImage]="model?.picture"
-    (onImageSelected)="onImageSelected($event)"></app-input-img> -->
+    <app-input-img (onImageSelected)="onImageSelected($event)" [urlCurrentImage]="model?.picture!"/>
 
     <h4>Biography</h4>
 
