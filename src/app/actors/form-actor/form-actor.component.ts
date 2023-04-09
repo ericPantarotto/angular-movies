@@ -40,9 +40,9 @@ export class FormActorComponent implements OnInit {
     this.form?.get('picture')?.setValue(image);
   }
 
-  // changeMarkdown(content: string) {
-  //   this.form?.get('biography')?.setValue(content);
-  // }
+  changeMarkdown(content: string) {
+    this.form?.get('biography')?.setValue(content);
+  }
 
   saveChanges() {
     this.onSaveChanges.emit(this.form?.value);
