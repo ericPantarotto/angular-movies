@@ -30,8 +30,8 @@ import { MoviesListComponent } from './movies/movies-list/movies-list.component'
 import { GenericListComponent } from './utilities/generic-list/generic-list.component';
 import { InputImgComponent } from './utilities/input-img/input-img.component';
 import { InputMarkdownComponent } from './utilities/input-markdown/input-markdown.component';
-import { RatingComponent } from './utilities/rating/rating.component';
 import { MapComponent } from './utilities/map/map.component';
+import { RatingComponent } from './utilities/rating/rating.component';
 @NgModule({
   declarations: [
     AppComponent,

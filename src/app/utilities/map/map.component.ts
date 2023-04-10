@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { LeafletMouseEvent, Marker, latLng, marker, tileLayer } from 'leaflet';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LeafletMouseEvent, Marker, icon, latLng, marker, tileLayer } from 'leaflet';
+import { coordinatesMap } from './coordinate';
 
 @Component({
   selector: 'app-map',
@@ -8,18 +9,20 @@ import { LeafletMouseEvent, Marker, latLng, marker, tileLayer } from 'leaflet';
 })
 export class MapComponent implements OnInit {
   constructor() {}
-
+  
   ngOnInit(): void {
-    // this.layers = this.initialCoordinates.map((value) =>
-    //   marker([value.latitude, value.longitude])
-    // );
+    this.layers = this.initialCoordinates.map((value) =>
+      marker([value.latitude, value.longitude], {
+        icon: this.iconDefault,
+      })
+    );
   }
 
-  // @Input()
-  // initialCoordinates: coordinatesMap[] = [];
+  @Input()
+  initialCoordinates: coordinatesMap[] = [];
 
-  // @Output()
-  // onSelectedLocation = new EventEmitter<coordinatesMap>();
+  @Output()
+  onSelectedLocation = new EventEmitter<coordinatesMap>();
 
   options = {
     layers: [
@@ -34,12 +37,23 @@ export class MapComponent implements OnInit {
 
   layers: Marker<any>[] = [];
 
+  iconDefault = icon({
+    iconSize: [25, 41],
+    iconAnchor: [13, 41],
+    iconUrl: 'assets/marker-icon.png',
+    shadowUrl: 'assets/marker-shadow.png',
+  });
+
   handleMapClick(event: LeafletMouseEvent) {
     const latitude = event.latlng.lat;
     const longitude = event.latlng.lng;
     console.log({ latitude, longitude });
     this.layers = []; //NOTE: to keep only the last selection
-    this.layers.push(marker([latitude, longitude]));
-    // this.onSelectedLocation.emit({ latitude, longitude });
+    this.layers.push(
+      marker([latitude, longitude], {
+        icon: this.iconDefault,
+      })
+    );
+    this.onSelectedLocation.emit({ latitude, longitude });
   }
 }
