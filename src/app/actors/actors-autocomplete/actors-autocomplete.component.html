@@ -14,18 +14,17 @@
         </mat-option>
     </mat-autocomplete>
 </form>
-
+<!-- 
 <ul>
     <li *ngFor="let actor of selectedActors">{{actor.name}}</li>
-</ul>
-<!-- 
+</ul> -->
+
 <table
     mat-table
     *ngIf="selectedActors.length > 0"
     [dataSource]="selectedActors"
     cdkDropList
-    [cdkDropListData]="selectedActors"
-    (cdkDropListDropped)="dropped($event)"
+ 
 >
 
     <ng-container matColumnDef="picture">
@@ -58,7 +57,7 @@
     </ng-container>
 
     <tr mat-row *matRowDef="let row; columns: columnsToDisplay"
-        cdkDrag [cdkDragData]="row"
+        
     ></tr>
 
-</table> -->
+</table>
