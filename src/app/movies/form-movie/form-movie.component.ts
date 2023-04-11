@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { movieCreationDTO, movieDTO } from '../movies.model';
 import { multipleSelectorModel } from 'src/app/utilities/multiple-selector/multiple-selector.model';
+import { movieCreationDTO, movieDTO } from '../movies.model';
 
 @Component({
   selector: 'app-form-movie',
@@ -54,6 +54,27 @@ export class FormMovieComponent implements OnInit {
 
     if (this.model !== undefined) {
       this.form.patchValue(this.model);
+
+      this.model.genresIds.forEach((id) =>
+        this.selectedGenres.push(this.nonSelectedGenres[id - 1])
+      );
+      this.model.movieTheatersIds.forEach((id) =>
+        this.selectedMovieTheaters.push(this.nonSelectedMovieTheaters[id - 1])
+      );
+
+      for (let index = 0; index < this.model.genresIds.length; index++) {
+        // console.log(`${index}, value: ${this.model.genresIds[index]}`);
+        this.nonSelectedGenres.splice(
+          this.model.genresIds[index] - 1 - index,
+          1
+        );
+      }
+      for (let index = 0; index < this.model.movieTheatersIds.length; index++) {
+        this.nonSelectedMovieTheaters.splice(
+          this.model.movieTheatersIds[index] - 1 - index,
+          1
+        );
+      }
     }
   }
 
@@ -69,10 +90,10 @@ export class FormMovieComponent implements OnInit {
     const genresIds = this.selectedGenres.map((value) => value.key);
     this.form?.get('genresIds')?.setValue(genresIds);
 
-    // const movieTheatersIds = this.selectedMovieTheaters.map(
-    //   (value) => value.key
-    // );
-    // this.form?.get('movieTheatersIds')?.setValue(movieTheatersIds);
+    const movieTheatersIds = this.selectedMovieTheaters.map(
+      (value) => value.key
+    );
+    this.form?.get('movieTheatersIds')?.setValue(movieTheatersIds);
 
     this.onSaveChanges.emit(this.form?.value);
   }
