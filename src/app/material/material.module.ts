@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -28,6 +29,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatTabsModule,
     MatAutocompleteModule,
     MatTableModule,
+    DragDropModule
   ],
   imports: [CommonModule],
 })
