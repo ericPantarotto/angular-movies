@@ -35,6 +35,9 @@ export class FormMovieComponent implements OnInit {
 
   selectedMovieTheaters: multipleSelectorModel[] = [];
 
+  @Input()
+  actorsArray: number[] = [];
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       title: [

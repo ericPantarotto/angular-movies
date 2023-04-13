@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatTable } from '@angular/material/table';
@@ -14,7 +14,7 @@ export class ActorsAutocompleteComponent implements OnInit {
 
   control: FormControl = new FormControl();
 
-  actors = [
+  actors: {name: string, picture: string}[] = [
     {
       name: 'Tom Holland',
       picture:
@@ -32,8 +32,11 @@ export class ActorsAutocompleteComponent implements OnInit {
     },
   ];
 
-  // selectedActors: {name: string, picture: string}[] = [];
-  selectedActors: any[] = [];
+  @Input()
+  actorsArray: number[] = [];
+
+  // selectedActors: any[] = [];
+  selectedActors: { name: string; picture: string; character: string }[] = [];
 
   originalActors = this.actors;
 
@@ -50,6 +53,15 @@ export class ActorsAutocompleteComponent implements OnInit {
           -1
       );
     });
+
+    for (let index = 0; index < this.actorsArray.length; index++) {
+      let actor = this.actors[this.actorsArray[index]-1];
+      this.selectedActors.push({
+        name: actor.name,
+        picture: actor.picture,
+        character: `Character ${index + 1}`,
+      });
+    }
   }
 
   optionSelected(event: MatAutocompleteSelectedEvent) {

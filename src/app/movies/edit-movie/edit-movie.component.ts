@@ -19,6 +19,9 @@ export class EditMovieComponent {
     genresIds: [1, 3],
     movieTheatersIds: [2, 3],
   };
+
+  actorsArray: number[] = [3,2];
+
   constructor(private activatedRoute: ActivatedRoute) {}
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {});
