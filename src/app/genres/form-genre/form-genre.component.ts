@@ -27,7 +27,7 @@ export class FormGenreComponent {
           validators: [
             Validators.required,
             Validators.minLength(3),
-            firstLetterUppercase(),
+            // firstLetterUppercase(), //DEBUG:for tst display errors from the webapi
           ],
         },
       ],

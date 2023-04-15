@@ -37,6 +37,7 @@ import { FormMovieComponent } from './movies/form-movie/form-movie.component';
 import { MultipleSelectorComponent } from './utilities/multiple-selector/multiple-selector.component';
 import { ActorsAutocompleteComponent } from './actors/actors-autocomplete/actors-autocomplete.component';
 import { AppConfigService } from './utilities/app-config.service';
+import { DisplayErrorsComponent } from './utilities/display-errors/display-errors.component';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -72,6 +73,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     FormMovieComponent,
     MultipleSelectorComponent,
     ActorsAutocompleteComponent,
+    DisplayErrorsComponent,
   ],
   imports: [
     BrowserModule,
