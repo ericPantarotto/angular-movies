@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
 
@@ -36,6 +36,13 @@ import { RatingComponent } from './utilities/rating/rating.component';
 import { FormMovieComponent } from './movies/form-movie/form-movie.component';
 import { MultipleSelectorComponent } from './utilities/multiple-selector/multiple-selector.component';
 import { ActorsAutocompleteComponent } from './actors/actors-autocomplete/actors-autocomplete.component';
+import { AppConfigService } from './utilities/app-config.service';
+
+const appInitializerFn = (appConfig: AppConfigService) => {
+  return () => {
+    return appConfig.loadAppConfig();
+  };
+};
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,9 +82,17 @@ import { ActorsAutocompleteComponent } from './actors/actors-autocomplete/actors
     FormsModule,
     MarkdownModule.forRoot(),
     LeafletModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    AppConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFn,
+      multi: true,
+      deps: [AppConfigService],
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
