@@ -9,7 +9,7 @@ import { GenresService } from '../genres.service';
 })
 export class IndexGenresComponent implements OnInit {
   genres: genreDTO[] = [];
-  columnsToDisplay = ['name', 'actions'];
+  columnsToDisplay: string[] = ['name', 'actions'];
 
   constructor(private genresService: GenresService) {}
   ngOnInit(): void {
