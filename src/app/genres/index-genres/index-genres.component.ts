@@ -11,10 +11,19 @@ export class IndexGenresComponent implements OnInit {
   genres: genreDTO[] = [];
   columnsToDisplay = ['name', 'actions'];
 
-  constructor(private genreService: GenresService) {}
+  constructor(private genresService: GenresService) {}
   ngOnInit(): void {
-    this.genreService.getAll().subscribe((genres) => {
-      // console.log(genres);
+    this.loadGenres();
+  }
+
+  delete(id: number) {
+    this.genresService.delete(id).subscribe(() => {
+      this.loadGenres();
+    });
+  }
+
+  private loadGenres() {
+    this.genresService.getAll().subscribe((genres) => {
       this.genres = genres;
     });
   }
