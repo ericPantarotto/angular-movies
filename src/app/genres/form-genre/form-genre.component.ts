@@ -10,7 +10,7 @@ import { genreCreationDTO } from '../genres.model';
 })
 export class FormGenreComponent {
   constructor(private formBuilder: FormBuilder) {}
-  
+
   form?: FormGroup;
   @Input()
   model?: genreCreationDTO;
@@ -18,7 +18,7 @@ export class FormGenreComponent {
   @Output()
   onSaveChanges: EventEmitter<genreCreationDTO> =
     new EventEmitter<genreCreationDTO>();
-  
+
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       name: [
@@ -27,7 +27,7 @@ export class FormGenreComponent {
           validators: [
             Validators.required,
             Validators.minLength(3),
-            // firstLetterUppercase(), //DEBUG:for tst display errors from the webapi
+            firstLetterUppercase(),
           ],
         },
       ],
@@ -37,7 +37,6 @@ export class FormGenreComponent {
       this.form.patchValue(this.model);
     }
   }
-
 
   getErrorMessageFieldName() {
     const field = this.form?.get('name');

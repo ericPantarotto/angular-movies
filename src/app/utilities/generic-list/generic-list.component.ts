@@ -9,5 +9,7 @@ export class GenericListComponent {
   constructor() {}
 
   @Input()
-  list!: { title: string; releaseDate?: Date; price?: number }[];
+  list: any[] = [];
+  // @Input()
+  // list!: { title: string; releaseDate?: Date; price?: number }[];
 }
