@@ -1,9 +1,9 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { actorCreationDTO, actorDTO } from './actor.model';
-import { formatDateFormData } from '../utilities/utils';
-import { HttpClient } from '@angular/common/http';
-import { AppConfigService } from '../utilities/app-config.service';
 import { Observable } from 'rxjs';
+import { AppConfigService } from '../utilities/app-config.service';
+import { formatDateFormData } from '../utilities/utils';
+import { actorCreationDTO, actorDTO } from './actor.model';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +16,11 @@ export class ActorsService {
 
   private apiURL = this.environment.config['apiURL'] + '/people'; //NOTE: using runtine env configuration
 
-  get(): Observable<actorDTO[]> {
-    return this.http.get<actorDTO[]>(this.apiURL);
+  get(page: number, recordsPerPage: number): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('page', page.toString());
+    params = params.append('recordsPerPage', recordsPerPage.toString());
+    return this.http.get<actorDTO[]>(this.apiURL, { observe: 'response', params });
   }
 
   create(actor: actorCreationDTO) {
