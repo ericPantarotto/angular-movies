@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { movieTheatersCreationDTO } from '../movie-theaters.model';
+import { MovieTheatersService } from '../movie-theaters.service';
 
 @Component({
   selector: 'app-create-theater',
@@ -7,8 +9,14 @@ import { movieTheatersCreationDTO } from '../movie-theaters.model';
   styleUrls: ['./create-theater.component.css'],
 })
 export class CreateTheaterComponent {
+  constructor(
+    private movieTheaterService: MovieTheatersService,
+    private router: Router
+  ) {}
 
   saveChanges(movieTheater: movieTheatersCreationDTO) {
-    console.log(movieTheater);
+    this.movieTheaterService.create(movieTheater).subscribe({
+      complete: () => this.router.navigate(['/movietheaters']),
+    });
   }
 }
