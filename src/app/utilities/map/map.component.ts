@@ -31,8 +31,9 @@ export class MapComponent implements OnInit {
         attribution: 'Angular Movies',
       }),
     ],
-    zoom: 13,
+    zoom: 10,
     center: latLng(18.473564631048617, -69.93999481201173),
+    // center: latLng(49.62452516882549, 6.155090332031251), //Kirchberg
   };
 
   layers: Marker<any>[] = [];
