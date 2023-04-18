@@ -14,14 +14,18 @@ export class IndexActorsComponent implements OnInit {
   columnsToDisplay = ['name', 'actions'];
   totalAmountOfRecords?: string;
   currentPage: number = 1;
-  pageSize: number = 5;
+  pageSize: number = 10;
 
   constructor(private actorsService: ActorsService) {}
   ngOnInit(): void {
     this.loadActors();
   }
 
-  delete(id: number) {}
+  delete(id: number) {
+    this.actorsService.delete(id).subscribe(() => {
+      this.loadActors();
+    });
+  }
 
   private loadActors() {
     this.actorsService
