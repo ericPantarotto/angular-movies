@@ -8,6 +8,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class InputMarkdownComponent {
   @Input()
   markdownContent? = '';
+  
+  @Input()
+  label = 'Value';
 
   @Output()
   changeMarkdown = new EventEmitter<string>();
