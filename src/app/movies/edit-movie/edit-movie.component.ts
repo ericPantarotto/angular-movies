@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { movieCreationDTO, movieDTO } from '../movies.model';
+import { actorsMovieDTO } from 'src/app/actors/actor.model';
 
 @Component({
   selector: 'app-edit-movie',
@@ -20,7 +21,7 @@ export class EditMovieComponent {
     movieTheatersIds: [2, 3],
   };
 
-  actorsArray: number[] = [3,2];
+  selectedActors: actorsMovieDTO[] = [];
 
   constructor(private activatedRoute: ActivatedRoute) {}
   ngOnInit(): void {

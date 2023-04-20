@@ -16,27 +16,6 @@ export class ActorsAutocompleteComponent implements OnInit {
 
   control: FormControl = new FormControl();
 
-  actors: { name: string; picture: string }[] = [
-    // {
-    //   name: 'Tom Holland',
-    //   picture:
-    //     'https://m.media-amazon.com/images/M/MV5BNTAzMzA3NjQwOF5BMl5BanBnXkFtZTgwMDUzODQ5MTI@._V1_UY317_CR23,0,214,317_AL_.jpg',
-    // },
-    // {
-    //   name: 'Tom Hanks',
-    //   picture:
-    //     'https://m.media-amazon.com/images/M/MV5BMTQ2MjMwNDA3Nl5BMl5BanBnXkFtZTcwMTA2NDY3NQ@@._V1_UY317_CR2,0,214,317_AL_.jpg',
-    // },
-    // {
-    //   name: 'Samuel L. Jackson',
-    //   picture:
-    //     'https://m.media-amazon.com/images/M/MV5BMTQ1NTQwMTYxNl5BMl5BanBnXkFtZTYwMjA1MzY1._V1_UX214_CR0,0,214,317_AL_.jpg',
-    // },
-  ];
-
-  @Input()
-  actorsArray: number[] = [];
-
   @Input()
   selectedActors: actorsMovieDTO[] = [];
 

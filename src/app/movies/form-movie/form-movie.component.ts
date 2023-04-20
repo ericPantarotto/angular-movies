@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { actorsMovieDTO } from 'src/app/actors/actor.model';
 import { multipleSelectorModel } from 'src/app/utilities/multiple-selector/multiple-selector.model';
 import { movieCreationDTO, movieDTO } from '../movies.model';
 
@@ -26,11 +27,11 @@ export class FormMovieComponent implements OnInit {
 
   @Input()
   nonSelectedMovieTheaters: multipleSelectorModel[] = [];
-  
+
   selectedMovieTheaters: multipleSelectorModel[] = [];
 
   @Input()
-  actorsArray: number[] = [];
+  selectedActors: actorsMovieDTO[] = [];
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -47,31 +48,11 @@ export class FormMovieComponent implements OnInit {
       poster: '',
       genresIds: '',
       movieTheatersIds: '',
+      actors: '',
     });
 
     if (this.model !== undefined) {
       this.form.patchValue(this.model);
-
-      this.model.genresIds.forEach((id) =>
-        this.selectedGenres.push(this.nonSelectedGenres[id - 1])
-      );
-      this.model.movieTheatersIds.forEach((id) =>
-        this.selectedMovieTheaters.push(this.nonSelectedMovieTheaters[id - 1])
-      );
-
-      for (let index = 0; index < this.model.genresIds.length; index++) {
-        // console.log(`${index}, value: ${this.model.genresIds[index]}`);
-        this.nonSelectedGenres.splice(
-          this.model.genresIds[index] - 1 - index,
-          1
-        );
-      }
-      for (let index = 0; index < this.model.movieTheatersIds.length; index++) {
-        this.nonSelectedMovieTheaters.splice(
-          this.model.movieTheatersIds[index] - 1 - index,
-          1
-        );
-      }
     }
   }
 
@@ -91,6 +72,11 @@ export class FormMovieComponent implements OnInit {
       (value) => value.key
     );
     this.form?.get('movieTheatersIds')?.setValue(movieTheatersIds);
+
+    const actors = this.selectedActors.map((val) => {
+      return { personId: val.id, character: val.character };
+    });
+    this.form?.get('actors')?.setValue(actors);
 
     this.onSaveChanges.emit(this.form?.value);
   }
