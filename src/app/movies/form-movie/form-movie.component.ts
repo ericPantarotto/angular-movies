@@ -43,7 +43,7 @@ export class FormMovieComponent implements OnInit {
       ],
       summary: '',
       inTheaters: false,
-      trailer: '',
+      // trailer: '',
       releaseDate: '',
       poster: '',
       genresIds: '',

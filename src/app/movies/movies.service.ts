@@ -55,7 +55,7 @@ export class MoviesService {
 
     formData.append('title', movie.title);
     formData.append('summary', movie.summary);
-    formData.append('trailer', movie.trailer);
+    // formData.append('trailer', movie.trailer);
     formData.append('inTheaters', String(movie.inTheaters));
     if (movie.releaseDate) {
       formData.append('releaseDate', formatDateFormData(movie.releaseDate));

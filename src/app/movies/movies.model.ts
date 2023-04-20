@@ -8,7 +8,7 @@ export interface movieCreationDTO {
   poster: File;
   inTheaters: boolean;
   releaseDate: Date;
-  trailer: string;
+  // trailer: string;
   genresIds: number[];
   movieTheatersIds: number[];
   actors: actorsMovieDTO[];
@@ -20,7 +20,7 @@ export interface movieDTO {
   poster: string;
   inTheaters: boolean;
   releaseDate: Date;
-  trailer: string;
+  // trailer: string;
   genresIds: number[];
   movieTheatersIds: number[];
 }
