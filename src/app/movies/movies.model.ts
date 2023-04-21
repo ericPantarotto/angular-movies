@@ -21,8 +21,9 @@ export interface movieDTO {
   inTheaters: boolean;
   releaseDate: Date;
   // trailer: string;
-  genresIds: number[];
-  movieTheatersIds: number[];
+  genres: genreDTO[];
+  movieTheaters: movieTheatersDTO[];
+  actors: actorsMovieDTO[];
 }
 
 export interface MoviePostGetDTO {

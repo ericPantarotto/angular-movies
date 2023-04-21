@@ -1,0 +1,14 @@
+mat-chip-listbox {
+  display: inline-block;
+  margin-bottom: 0.6rem;
+}
+
+mat-chip {
+  cursor: pointer;
+}
+
+a.rating {
+  position: relative;
+  bottom: 8px;
+  padding-left: 10px;
+}

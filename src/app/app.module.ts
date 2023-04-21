@@ -39,6 +39,7 @@ import { MultipleSelectorComponent } from './utilities/multiple-selector/multipl
 import { ActorsAutocompleteComponent } from './actors/actors-autocomplete/actors-autocomplete.component';
 import { AppConfigService } from './utilities/app-config.service';
 import { DisplayErrorsComponent } from './utilities/display-errors/display-errors.component';
+import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -75,6 +76,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     MultipleSelectorComponent,
     ActorsAutocompleteComponent,
     DisplayErrorsComponent,
+    MovieDetailsComponent,
   ],
   imports: [
     BrowserModule,

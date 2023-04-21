@@ -1,6 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { LeafletMouseEvent, Marker, icon, latLng, marker, tileLayer } from 'leaflet';
-import { coordinatesMap } from './coordinate';
+import {
+  LeafletMouseEvent,
+  Marker,
+  icon,
+  latLng,
+  marker,
+  tileLayer,
+} from 'leaflet';
+import { coordinatesMap, coordinatesMapWithMessage } from './coordinate';
 
 @Component({
   selector: 'app-map',
@@ -9,17 +16,25 @@ import { coordinatesMap } from './coordinate';
 })
 export class MapComponent implements OnInit {
   constructor() {}
-  
+
   ngOnInit(): void {
-    this.layers = this.initialCoordinates.map((value) =>
-      marker([value.latitude, value.longitude], {
+    this.layers = this.initialCoordinates.map((value) => {
+      const m = marker([value.latitude, value.longitude], {
         icon: this.iconDefault,
-      })
-    );
+      });
+      if (value.message) {
+        m.bindPopup(value.message, { autoClose: false, autoPan: false });
+      }
+
+      return m;
+    });
   }
 
   @Input()
-  initialCoordinates: coordinatesMap[] = [];
+  initialCoordinates: coordinatesMapWithMessage[] = [];
+
+  @Input()
+  editMode: boolean = true;
 
   @Output()
   onSelectedLocation = new EventEmitter<coordinatesMap>();
@@ -31,7 +46,7 @@ export class MapComponent implements OnInit {
         attribution: 'Angular Movies',
       }),
     ],
-    zoom: 10,
+    zoom: 13,
     center: latLng(18.473564631048617, -69.93999481201173),
     // center: latLng(49.62452516882549, 6.155090332031251), //Kirchberg
   };
@@ -46,15 +61,17 @@ export class MapComponent implements OnInit {
   });
 
   handleMapClick(event: LeafletMouseEvent) {
-    const latitude = event.latlng.lat;
-    const longitude = event.latlng.lng;
-    console.log({ latitude, longitude });
-    this.layers = []; //NOTE: to keep only the last selection
-    this.layers.push(
-      marker([latitude, longitude], {
-        icon: this.iconDefault,
-      })
-    );
-    this.onSelectedLocation.emit({ latitude, longitude });
+    if (this.editMode) {
+      const latitude = event.latlng.lat;
+      const longitude = event.latlng.lng;
+      console.log({ latitude, longitude });
+      this.layers = []; //NOTE: to keep only the last selection
+      this.layers.push(
+        marker([latitude, longitude], {
+          icon: this.iconDefault,
+        })
+      );
+      this.onSelectedLocation.emit({ latitude, longitude });
+    }
   }
 }
