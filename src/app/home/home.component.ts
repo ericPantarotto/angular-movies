@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MoviesService } from '../movies/movies.service';
+import { movieDTO } from '../movies/movies.model';
 
 @Component({
   selector: 'app-home',
@@ -6,37 +8,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  
+  constructor(private moviesService: MoviesService) { }
+  
+  title = 'angular-movies';
+  
+  moviesInTheaters: movieDTO[] = [];
+  
+  moviesFutureReleases: movieDTO[] = [];
+  
   ngOnInit(): void {
-    this.moviesInTheaters = [
-      {
-        title: 'Spider-Man',
-        releaseDate: new Date(),
-        price: 1400.99,
-        poster:
-          'https://moviesapiecr.blob.core.windows.net/movies/3bbbf918-4c87-4060-9280-b7aa5be5750d.jpg',
-      },
-      {
-        title: 'Moana',
-        releaseDate: new Date('2016-11-14'),
-        price: 300.99,
-        poster: 'https://moviesapiecr.blob.core.windows.net/movies/moana.jpg',
-      },
-    ];
-
-    this.moviesFutureReleases = [];
+    this.loadData();
   }
 
-  title = 'angular-movies';
-  moviesInTheaters!: {
-    title: string;
-    releaseDate: Date;
-    price: number;
-    poster: string;
-  }[];
-  moviesFutureReleases!: {
-    title: string;
-    releaseDate: Date;
-    price: number;
-    poster: string;
-  }[];
+
+  loadData() {
+    this.moviesService.getHomePageMovies().subscribe((homeDTO) => {
+      this.moviesFutureReleases = homeDTO.upcomingReleases;
+      this.moviesInTheaters = homeDTO.inTheaters;
+    });
+  }
 }

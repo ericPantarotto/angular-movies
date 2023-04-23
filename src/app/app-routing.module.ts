@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'movies/create', component: CreateMovieComponent },
   { path: 'movies/edit/:id', component: EditMovieComponent },
   { path: 'movies/filter', component: MovieFilterComponent },
-  { path: 'movies/:id', component: MovieDetailsComponent },
+  { path: 'movie/:id', component: MovieDetailsComponent },
 
   { path: '**', redirectTo: '' },
 ];

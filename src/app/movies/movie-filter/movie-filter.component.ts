@@ -18,16 +18,19 @@ export class MovieFilterComponent implements OnInit {
 
   movies = [
     {
+      id: 1,
       title: 'Spider-Man',
       poster:
         'https://m.media-amazon.com/images/M/MV5BMGZlNTY1ZWUtYTMzNC00ZjUyLWE0MjQtMTMxN2E3ODYxMWVmXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_UX182_CR0,0,182,268_AL_.jpg',
     },
     {
+      id: 2,
       title: 'Moana',
       poster:
         'https://m.media-amazon.com/images/M/MV5BMjI4MzU5NTExNF5BMl5BanBnXkFtZTgwNzY1MTEwMDI@._V1_UX182_CR0,0,182,268_AL_.jpg',
     },
     {
+      id: 3,
       title: 'Inception',
       poster:
         'https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UX182_CR0,0,182,268_AL_.jpg',
