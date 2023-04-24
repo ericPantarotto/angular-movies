@@ -5,3 +5,7 @@ mat-form-field {
 mat-form-field {
   height: 300px;
 }
+
+mat-form-field textarea {
+  height: 200px;
+}
