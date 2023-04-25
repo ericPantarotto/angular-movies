@@ -11,19 +11,25 @@
       Search Movies</a>
   </div>
 
-  <div>
-    <a mat-button routerLink="genres">Genres</a>
-  </div>
+  <app-authorize-view [role]="'admin'">
+    <ng-container authorized>
+      <div>
+        <a mat-button routerLink="genres">Genres</a>
+      </div>
+    
+      <div>
+        <a mat-button routerLink="actors">Actors</a>
+      </div>
+    
+      <div>
+        <a mat-button routerLink="movietheaters">Movie Theaters</a>
+      </div>
+    
+      <div>
+        <a mat-button routerLink="movies/create">Create Movie</a>
+      </div>
+    </ng-container>
 
-  <div>
-    <a mat-button routerLink="actors">Actors</a>
-  </div>
+  </app-authorize-view>
 
-  <div>
-    <a mat-button routerLink="movietheaters">Movie Theaters</a>
-  </div>
-
-  <div>
-    <a mat-button routerLink="movies/create">Create Movie</a>
-  </div>
 </mat-toolbar>

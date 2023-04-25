@@ -40,6 +40,7 @@ import { ActorsAutocompleteComponent } from './actors/actors-autocomplete/actors
 import { AppConfigService } from './utilities/app-config.service';
 import { DisplayErrorsComponent } from './utilities/display-errors/display-errors.component';
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
+import { AuthorizeViewComponent } from './security/authorize-view/authorize-view.component';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -77,6 +78,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     ActorsAutocompleteComponent,
     DisplayErrorsComponent,
     MovieDetailsComponent,
+    AuthorizeViewComponent,
   ],
   imports: [
     BrowserModule,
