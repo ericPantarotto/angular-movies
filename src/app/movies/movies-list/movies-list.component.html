@@ -14,8 +14,26 @@
           </a>
         </p>
         <div>
-          <a mat-flat-button color="primary" [routerLink]="'/movies/edit/' + movie.id"> Edit </a>
-          <button mat-flat-button color="warn" type="button">Delete</button>
+          <a
+            mat-flat-button
+            color="primary"
+            [routerLink]="'/movies/edit/' + movie.id"
+          >
+            Edit
+          </a>
+          <button
+            mat-flat-button
+            color="warn"
+            type="button"
+            [swal]="{
+              title: 'Confirmation',
+              text: 'Are you sure you want to delete this?',
+              showCancelButton: true
+            }"
+            (confirm)="remove(movie.id)"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

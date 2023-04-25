@@ -138,4 +138,8 @@ export class MovieFilterComponent implements OnInit {
     this.writeParametersInURL();
     this.filterMovies(this.form?.value);
   }
+
+  onDelete() {
+    this.filterMovies(this.form?.value);
+  }
 }

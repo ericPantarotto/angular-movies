@@ -46,9 +46,9 @@ export class MoviesService {
     return this.http.post<movieDTO>(this.apiURL, formData);
   }
 
-  // public delete(id: number) {
-  //   return this.http.delete(`${this.apiURL}/${id}`);
-  // }
+  public delete(id: number) {
+    return this.http.delete(`${this.apiURL}/${id}`);
+  }
 
   private BuildFormData(movie: movieCreationDTO): FormData {
     const formData = new FormData();
