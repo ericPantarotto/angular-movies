@@ -42,6 +42,8 @@ import { DisplayErrorsComponent } from './utilities/display-errors/display-error
 import { MovieDetailsComponent } from './movies/movie-details/movie-details.component';
 import { AuthorizeViewComponent } from './security/authorize-view/authorize-view.component';
 import { LoginComponent } from './security/login/login.component';
+import { RegisterComponent } from './security/register/register.component';
+import { AuthenticationFormComponent } from './security/authentication-form/authentication-form.component';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -81,6 +83,8 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     MovieDetailsComponent,
     AuthorizeViewComponent,
     LoginComponent,
+    RegisterComponent,
+    AuthenticationFormComponent,
   ],
   imports: [
     BrowserModule,
