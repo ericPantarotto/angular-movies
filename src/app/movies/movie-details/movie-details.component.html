@@ -12,7 +12,8 @@
       </mat-chip-option>
     </mat-chip-listbox>
     <a class="rating"
-      >| {{ releaseDate?.toDateString() }} | Average: 0.0 | Your vote: 0.0</a
+      >| {{ releaseDate?.toDateString() }} | Average: {{movie.averageVote}} | Your vote: 
+      <app-rating (onRating)="onRating($event)" [selectedRate]="movie.userVote"></app-rating></a
     >
 
     <div style="display: flex">
