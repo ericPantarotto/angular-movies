@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AppConfigService } from '../utilities/app-config.service';
 import { formatDateFormData } from '../utilities/utils';
 import { actorCreationDTO, actorDTO, actorsMovieDTO } from './actor.model';
+// import { StartConfigService } from '../utilities/start-config.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,6 +13,7 @@ export class ActorsService {
   constructor(
     private http: HttpClient,
     private environment: AppConfigService
+    // private environment: StartConfigService
   ) {}
 
   private apiURL = this.environment.config['apiURL'] + '/people'; //NOTE: using runtine env configuration

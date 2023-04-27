@@ -1,6 +1,6 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2'
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -44,6 +44,9 @@ import { AuthorizeViewComponent } from './security/authorize-view/authorize-view
 import { LoginComponent } from './security/login/login.component';
 import { RegisterComponent } from './security/register/register.component';
 import { AuthenticationFormComponent } from './security/authentication-form/authentication-form.component';
+import { JwtInterceptorService } from './security/jwt-interceptor.service';
+// import { appInitializer } from './utilities/app-initializers';
+// import { StartConfigService } from './utilities/start-config.service';
 
 const appInitializerFn = (appConfig: AppConfigService) => {
   return () => {
@@ -96,7 +99,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     MarkdownModule.forRoot(),
     LeafletModule,
     HttpClientModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
   ],
   providers: [
     AppConfigService,
@@ -105,6 +108,18 @@ const appInitializerFn = (appConfig: AppConfigService) => {
       useFactory: appInitializerFn,
       multi: true,
       deps: [AppConfigService],
+      
+    },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: appInitializer,
+    //   multi: true,
+    //   deps: [StartConfigService],
+    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorService,
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],

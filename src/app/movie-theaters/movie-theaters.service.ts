@@ -6,6 +6,7 @@ import {
   movieTheatersCreationDTO,
   movieTheatersDTO,
 } from './movie-theaters.model';
+// import { StartConfigService } from '../utilities/start-config.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,7 @@ export class MovieTheatersService {
   constructor(
     private http: HttpClient,
     private environment: AppConfigService
+    // private environment: StartConfigService
   ) {}
 
   private apiURL = this.environment.config['apiURL'] + '/movietheaters'; //NOTE: using runtine env configuration

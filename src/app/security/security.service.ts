@@ -3,20 +3,26 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppConfigService } from '../utilities/app-config.service';
 import { authenticationResponse, userCredentials } from './security.models';
+// import { StartConfigService } from '../utilities/start-config.service';
+import { environment } from 'src/environments/environment.development';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SecurityService {
-  private apiURL = this.environment.config['apiURL'] + '/accounts';
+  private apiURL = environment.apiURL + '/accounts';
+  // private apiURL = this.environment.config['apiURL'] + '/accounts';
   private readonly tokenKey: string = 'token';
   private readonly expirationTokenKey: string = 'token-expiration';
   private readonly roleField = 'role';
 
   constructor(
     private http: HttpClient,
-    private environment: AppConfigService
-  ) {}
+    private router: Router
+  ) // private environment: AppConfigService
+  // private environment: StartConfigService
+  {}
 
   isAuthenticated(): boolean {
     const token = localStorage.getItem(this.tokenKey);
@@ -59,6 +65,7 @@ export class SecurityService {
   logout() {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.expirationTokenKey);
+    this.router.navigate(['/login']);
   }
 
   saveToken(authenticationResponse: authenticationResponse) {
@@ -76,5 +83,9 @@ export class SecurityService {
     }
     const dataToken = JSON.parse(atob(token.split('.')[1]));
     return dataToken[field];
+  }
+
+  getToken() {
+    return localStorage.getItem(this.tokenKey);
   }
 }
