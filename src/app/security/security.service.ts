@@ -15,14 +15,13 @@ export class SecurityService {
   // private apiURL = this.environment.config['apiURL'] + '/accounts';
   private readonly tokenKey: string = 'token';
   private readonly expirationTokenKey: string = 'token-expiration';
-  private readonly roleField = 'role';
+  private readonly roleField =
+    'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
 
   constructor(
     private http: HttpClient,
-    private router: Router
-  ) // private environment: AppConfigService
-  // private environment: StartConfigService
-  {}
+    private router: Router // private environment: AppConfigService // private environment: StartConfigService
+  ) {}
 
   isAuthenticated(): boolean {
     const token = localStorage.getItem(this.tokenKey);
@@ -43,7 +42,7 @@ export class SecurityService {
   }
 
   getRole(): string {
-    return '';
+    return this.getFieldFromJWT(this.roleField);
   }
 
   register(
