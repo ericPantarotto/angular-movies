@@ -1,0 +1,92 @@
+<h3>Users</h3>
+
+<app-generic-list [list]="users">
+  <ng-container content>
+    <table mat-table [dataSource]="users" class="mat-elevation-z8 table-index">
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.emailAddress }}</td>
+      </ng-container>
+      <ng-container matColumnDef="roles">
+        <th mat-header-cell *matHeaderCellDef>Roles</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-chip-listbox>
+            <mat-chip-option *ngFor="let role of element.roles">
+              {{ role }}
+              <button
+                matChipRemove
+                [attr.aria-label]="'remove ' + role"
+                [swal]="{
+                  title: 'Confirmation',
+                  text: 'Are you sure that you want to delete this role?',
+                  showCancelButton: true
+                }"
+                (confirm)="remove(element, role)"
+              >
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-option>
+            
+          </mat-chip-listbox>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+            <form>
+
+                <input [formControl]="fruitCtrl"
+                  placeholder="New Role..."
+                  [matAutocomplete]="auto"
+                />
+                <mat-autocomplete
+                  #auto="matAutocomplete"
+                  (optionSelected)="selected($event, element)"
+                >
+                  <mat-option
+                    *ngFor="let fruit of filteredFruits | async"
+                    [value]="fruit"
+                  >
+                    {{ fruit }}
+                  </mat-option>
+                </mat-autocomplete>
+            </form>
+
+        </td>
+      </ng-container>
+      
+      <!-- <ng-container matColumnDef="roles">
+        <th mat-header-cell *matHeaderCellDef>Roles</th>
+        <td mat-cell *matCellDef="let element">{{  element.roles.join(', ')  }}</td>
+      </ng-container>   -->
+      <!-- 
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-flat-button color="primary" 
+                    [swal]="{
+                        title: 'Confirmation',
+                        text: 'Are you sure that you want to make the user an admin?',
+                        showCancelButton: true
+                    }"
+                    (confirm)="makeAdmin(element.id)">
+                        Make Admin
+                    </button>
+
+          <button mat-flat-button color="warn" 
+                    [swal]="{
+                        title: 'Confirmation',
+                        text: 'Are you sure that you want to remove the user as an admin?',
+                        showCancelButton: true
+                    }"
+                    (confirm)="removeAdmin(element.id)">
+                        Remove Admin
+                    </button>
+        </td>
+      </ng-container> -->
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+    </table>
+  </ng-container>
+</app-generic-list>

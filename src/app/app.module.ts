@@ -45,6 +45,7 @@ import { LoginComponent } from './security/login/login.component';
 import { RegisterComponent } from './security/register/register.component';
 import { AuthenticationFormComponent } from './security/authentication-form/authentication-form.component';
 import { JwtInterceptorService } from './security/jwt-interceptor.service';
+import { UsersIndexComponent } from './security/users-index/users-index.component';
 // import { appInitializer } from './utilities/app-initializers';
 // import { StartConfigService } from './utilities/start-config.service';
 
@@ -88,6 +89,7 @@ const appInitializerFn = (appConfig: AppConfigService) => {
     LoginComponent,
     RegisterComponent,
     AuthenticationFormComponent,
+    UsersIndexComponent,
   ],
   imports: [
     BrowserModule,
